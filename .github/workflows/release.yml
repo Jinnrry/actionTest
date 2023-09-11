@@ -19,3 +19,9 @@ jobs:
         uses: actions/setup-go@v4.1.0
       - name: build
         run: chmod +x ./build.sh && ./build.sh
+      - name: Upload files to Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: output
+          path: |
+            ./output/
