@@ -1,0 +1,24 @@
+name: Build and Release
+
+on:
+  label:
+    types:
+      - created
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.0.0
+      - name: Get version
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> ${GITHUB_ENV}
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.8.1
+      - name: Install Dependencies
+        run: npm install --global yarn
+      - name: Setup Go environment
+        uses: actions/setup-go@v4.1.0
+      - name: build
+        run: ./build.sh
