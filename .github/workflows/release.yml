@@ -18,4 +18,4 @@ jobs:
       - name: Setup Go environment
         uses: actions/setup-go@v4.1.0
       - name: build
-        run: ./build.sh
+        run: chmod +x ./build.sh && ./build.sh
