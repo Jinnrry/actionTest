@@ -23,4 +23,8 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           path: |
-            ./output/*
+            ./output/t_linux_amd64
+            ./output/t_windows_amd64.exe
+            ./output/t_mac_amd64
+            ./output/t_mac_arm64
+
