@@ -22,6 +22,5 @@ jobs:
       - name: Upload files to Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: output
           path: |
             ./output/*
