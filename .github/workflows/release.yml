@@ -44,12 +44,13 @@ jobs:
       - name: Get Release Message
         run: |
           tag=$(git describe --abbrev=0)
-          echo "message=$(git tag -l --format='%(contents)' $tag)" >> $GITHUB_ENV
+          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+          echo "MESSAGE=$(git tag -l --format='%(contents)' $tag)" >> $GITHUB_ENV
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./output/${{ env.FILENAME }}
           tag: v${{ env.VERSION }}
-          body: ${{ env.message }}
+          body: ${{ env.MESSAGE }}
           file_glob: true
