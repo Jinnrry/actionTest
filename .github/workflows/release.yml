@@ -45,12 +45,11 @@ jobs:
         run: |
           tag=${{ env.VERSION }}
           git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-          echo "MESSAGE=$(git tag -l --format='%(contents)' $tag)" >> $GITHUB_ENV
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./output/${{ env.FILENAME }}
           tag: v${{ env.VERSION }}
-          body: ${{ env.MESSAGE }}
+          body: $(git tag -l --format='%(contents)' $tag)"
           file_glob: true
