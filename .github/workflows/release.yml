@@ -1,14 +1,9 @@
 name: Build and Release
 
-on: 
-  workflow_dispatch:
-    inputs:
-      version:
-        description: Version
-        required: true
-      message:
-        description: Release Description
-        required: true
+on:
+  push:
+    tags:
+    - 'v*'
       
 jobs:
   build:
@@ -51,6 +46,5 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./output/${{ env.FILENAME }}
-          tag: ${{ github.event.inputs.version }}
-          body: ${{ github.event.inputs.message }}
+          tag: ${{ github.ref }}
           file_glob: true
