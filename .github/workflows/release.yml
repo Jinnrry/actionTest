@@ -6,7 +6,6 @@ jobs:
   build:
     strategy:
       matrix:
-        # Include amd64 on all platforms.
         goos: [windows,  linux, darwin]
         goarch: [amd64, arm64, 386]
         exclude:
