@@ -45,10 +45,6 @@ jobs:
         with:
           name: ${{ env.FILENAME }}
           path: ./output/${{ env.FILENAME }}
-      - name: Get Release Message
-        run: |
-          tag=${{ env.VERSION }}
-          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
