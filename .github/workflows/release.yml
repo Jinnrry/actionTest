@@ -1,9 +1,13 @@
 name: Build and Release
 
 on:
+  workflow_dispatch:
+  release:
+    types: [published]
   push:
-    tags:
-      - '*'
+    branches:
+      - main
+
       
 jobs:
   build:
@@ -50,5 +54,5 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./output/${{ env.FILENAME }}
-          tag: v${{ env.VERSION }}
+          tag: ${{ github.ref }}
           file_glob: true
