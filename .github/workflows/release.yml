@@ -51,5 +51,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./output/${{ env.FILENAME }}
           tag: v${{ env.VERSION }}
-          body: $(git tag -l --format='%(contents)' $tag)"
           file_glob: true
