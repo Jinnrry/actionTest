@@ -46,5 +46,5 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./output/${{ env.FILENAME }}
-          tag: ${{ env.VERSION }}
+          tag: v${{ env.VERSION }}
           file_glob: true
