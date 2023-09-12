@@ -20,11 +20,11 @@ jobs:
             goarch: 386
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.0.0
       - name: Get version
         id: get_version
         run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Checkout
+        uses: actions/checkout@v4.0.0
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.8.1
       - name: Install Dependencies
