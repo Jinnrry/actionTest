@@ -43,5 +43,5 @@ jobs:
           file: ./output/${{ env.FILENAME }}
           tag: ${{ github.ref }}
           body: |
-            ${{ steps.read_release.outputs.RELEASE_BODY }}
+            ${{ env.FILENAME }}
           file_glob: true
