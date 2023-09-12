@@ -9,7 +9,9 @@ jobs:
         # Include amd64 on all platforms.
         goos: [windows,  linux, darwin]
         goarch: [amd64, arm64, 386]
-
+        exclude:
+          - goos: darwin
+            goarch: 386
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
